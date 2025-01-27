@@ -50,7 +50,19 @@ drought_clean <- drought |>
 
 drought_clean |> 
   filter(drought_lvl != "None",
-         state_abb == "CA")
+         state_abb == "CA") %>% 
+  ggplot(aes(date, area_pct, fill = drought_lvl_long))+
+  geom_area(position = position_stack(reverse = TRUE))+
+  scale_fill_manual(values = c("blue", "red", "orange", "brown", "purple"))+
+  scale_x_date(breaks = scales::breaks_pretty(n = 10), 
+               expand = c(0,0))+
+  scale_y_continuous(breaks = scales::breaks_pretty(n = 10),
+              labels = scales::label_percent(scale = 1), 
+              expand = c(0,0)
+              )+
+  labs(title = "Drougth area in California")
+  
+
   
   # pipe into ggplot here!
 ```
