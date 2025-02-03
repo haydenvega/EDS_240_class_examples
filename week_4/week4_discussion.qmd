@@ -73,6 +73,39 @@ drought_clean |>
                      labels = scales::label_percent(scale = 1)) +
   
   # add title ----
-  labs(title = "Drought area in California")
-```
+  labs(title = "Drought area in California")+
+  theme_minimal()+
+  theme(
+    #remove axis titles + legend title
+    axis.title = element_blank(),
+    legend.title = element_blank(), 
+   
+    #movelegend & size
+    legend.position = "bottom",
+    legend.key.height = unit(0.25, "cm"), 
+    legend.key.width = unit(0.25, "cm"), 
+    
+    #add rectangle
+    plot.background = element_rect(color = "#686868"),
+    #update axis lines and tick colors 
+    axis.line = element_line("#5A9CD6"),
+    axis.ticks = element_line("#5A9CD6"), 
+    axis.ticks.length = unit(0.2, "cm"),
+    
+    #adjust plot title
+    plot.title = element_text(hjust = 0.5, 
+                              color = "#686868", 
+                              size = 20, 
+                              margin = margin(t = 10, r = 0, b = 15, l = 0)
+                              ), 
+    #update legen + axis font and size
+    axis.text = element_text(color = "#686868", 
+                             size = 12), 
+    legend.text = element_text(color = "#686868", size = 12), 
+    
+    #update plot margins
+    plot.margin = margin(10, 10, 10, 10),
+    panel.grid.minor.y = element_blank()
+  )
+````
 
